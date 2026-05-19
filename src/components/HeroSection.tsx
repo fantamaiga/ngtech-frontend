@@ -1,118 +1,308 @@
+'use client';
+
 import React from 'react';
-import { ArrowRight, Code, Shield, Heart, Sparkles, Zap, Globe } from 'lucide-react';
+import { ArrowRight, Code, Shield, Heart, Zap } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0">
-        {/* Gradient orbs */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-4000"></div>
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_primary-300_1px,_transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Logo */}
-        <div className="mb-8 flex justify-center">
-          <img 
-            src="/logo.png" 
-            alt="NGTech Logo" 
-            className="w-24 h-24 object-contain"
-          />
-        </div>
-        
-        {/* Main headline */}
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-400 to-cyan-400 text-transparent bg-clip-text">
-            <Sparkles className="w-6 h-6 text-primary-400" />
-            <span className="text-sm font-semibold uppercase tracking-wider">Bienvenue chez NGTech</span>
-          </div>
-        </div>
-        
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 animate-fade-in">
-          <span className="block text-white drop-shadow-2xl">Expertise Tech</span>
-          <span className="block bg-gradient-to-r from-primary-400 via-cyan-400 to-teal-400 text-transparent bg-clip-text drop-shadow-2xl">Impact Social</span>
-        </h1>
-        
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-primary-100 mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-up font-medium">
-          Développement Mobile, Fullstack et Cyber-sécurité d'excellence. 
-          <span className="block mt-2 text-primary-200">Nous formons les jeunes talents et créons des applications communautaires pour transformer la société.</span>
-        </p>
-        
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-primary-500/20 to-cyan-500/20 backdrop-blur-lg rounded-2xl p-8 border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/25">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-cyan-400 rounded-xl flex items-center justify-center mb-4 mx-auto">
-              <Code className="w-8 h-8 text-white" />
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+
+        .hero-root {
+          min-height: 100vh;
+          background: #F8FCFE;
+          position: relative;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+        }
+        .hero-bg-circle-1 {
+          position: absolute;
+          width: 600px; height: 600px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 70%);
+          top: -100px; right: -100px;
+          pointer-events: none;
+        }
+        .hero-bg-circle-2 {
+          position: absolute;
+          width: 400px; height: 400px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(0,180,216,0.07) 0%, transparent 70%);
+          bottom: 50px; left: -80px;
+          pointer-events: none;
+        }
+        .hero-grid {
+          position: absolute;
+          inset: 0;
+          background-image: 
+            linear-gradient(rgba(0,180,216,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,180,216,0.05) 1px, transparent 1px);
+          background-size: 60px 60px;
+          pointer-events: none;
+        }
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(0,180,216,0.1);
+          border: 1px solid rgba(0,180,216,0.25);
+          border-radius: 100px;
+          padding: 6px 16px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          color: #0096B4;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          margin-bottom: 28px;
+        }
+        .hero-title {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(48px, 7vw, 88px);
+          font-weight: 800;
+          line-height: 1.0;
+          letter-spacing: -0.02em;
+          color: #0A1628;
+          margin: 0 0 8px;
+        }
+        .hero-title-accent {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(48px, 7vw, 88px);
+          font-weight: 800;
+          line-height: 1.0;
+          letter-spacing: -0.02em;
+          background: linear-gradient(135deg, #00B4D8 0%, #0077A8 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin: 0 0 32px;
+        }
+        .hero-subtitle {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          color: #4B5563;
+          line-height: 1.7;
+          max-width: 580px;
+          margin: 0 auto 48px;
+        }
+        .hero-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #00B4D8;
+          color: white;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 16px 32px;
+          border-radius: 14px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          text-decoration: none;
+        }
+        .hero-btn-primary:hover {
+          background: #0096B4;
+          transform: translateY(-2px);
+          box-shadow: 0 16px 40px rgba(0,180,216,0.35);
+        }
+        .hero-btn-primary:hover .btn-arrow {
+          transform: translateX(4px);
+        }
+        .btn-arrow {
+          transition: transform 0.2s ease;
+        }
+        .hero-btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: white;
+          color: #0A1628;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 16px 32px;
+          border-radius: 14px;
+          border: 1.5px solid #E5E7EB;
+          cursor: pointer;
+          transition: all 0.25s ease;
+        }
+        .hero-btn-secondary:hover {
+          border-color: #00B4D8;
+          color: #00B4D8;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .stat-card {
+          background: white;
+          border: 1px solid rgba(0,180,216,0.15);
+          border-radius: 16px;
+          padding: 24px 28px;
+          text-align: center;
+          transition: all 0.25s ease;
+          box-shadow: 0 2px 16px rgba(0,180,216,0.06);
+        }
+        .stat-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 36px rgba(0,180,216,0.14);
+          border-color: rgba(0,180,216,0.3);
+        }
+        .stat-icon {
+          width: 44px; height: 44px;
+          background: rgba(0,180,216,0.1);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 12px;
+          color: #00B4D8;
+        }
+        .stat-number {
+          font-family: 'Syne', sans-serif;
+          font-size: 32px;
+          font-weight: 800;
+          color: #0A1628;
+          line-height: 1;
+          margin-bottom: 4px;
+        }
+        .stat-label {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          color: #6B7280;
+          letter-spacing: 0.02em;
+        }
+        .trust-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: white;
+          border: 1px solid #E5E7EB;
+          border-radius: 100px;
+          padding: 8px 16px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          color: #374151;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .scroll-indicator {
+          position: absolute;
+          bottom: 32px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          animation: bounce 2s infinite;
+        }
+        .scroll-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: #00B4D8;
+          opacity: 0.6;
+        }
+        .scroll-line {
+          width: 1px; height: 40px;
+          background: linear-gradient(to bottom, #00B4D8, transparent);
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateX(-50%) translateY(0); }
+          50% { transform: translateX(-50%) translateY(8px); }
+        }
+      `}</style>
+
+      <section className="hero-root" id="home">
+        <div className="hero-bg-circle-1" />
+        <div className="hero-bg-circle-2" />
+        <div className="hero-grid" />
+
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '120px 24px 80px', width: '100%', position: 'relative', zIndex: 1 }}>
+          {/* Top badge */}
+          <div style={{ textAlign: 'center' }}>
+            <div className="hero-badge">
+              <Zap size={13} />
+              Bienvenue chez NGTech — Guinée
             </div>
-            <div className="text-4xl font-bold text-white mb-2">50+</div>
-            <div className="text-primary-200 font-medium">Projets Livrés</div>
           </div>
-          <div className="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-2xl p-8 border border-cyan-400/30 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-xl flex items-center justify-center mb-4 mx-auto">
-              <Shield className="w-8 h-8 text-white" />
-            </div>
-            <div className="text-4xl font-bold text-white mb-2">100%</div>
-            <div className="text-cyan-200 font-medium">Sécurité Certifiée</div>
+
+          {/* Main headline */}
+          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <h1 className="hero-title">Expertise Tech,</h1>
+            <h1 className="hero-title-accent">Impact Social.</h1>
           </div>
-          <div className="bg-gradient-to-br from-teal-500/20 to-primary-500/20 backdrop-blur-lg rounded-2xl p-8 border border-teal-400/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/25">
-            <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-primary-400 rounded-xl flex items-center justify-center mb-4 mx-auto">
-              <Heart className="w-8 h-8 text-white" />
-            </div>
-            <div className="text-4xl font-bold text-white mb-2">30+</div>
-            <div className="text-teal-200 font-medium">Jeunes Employés</div>
-          </div>
-        </div>
-        
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <button className="group relative bg-gradient-to-r from-primary-500 to-cyan-500 hover:from-primary-600 hover:to-cyan-600 text-white font-bold px-10 py-5 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-primary-500/40 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity"></div>
-            <span className="relative flex items-center gap-3 text-lg">
-              <Zap className="w-5 h-5" />
+
+          {/* Subtitle */}
+          <p className="hero-subtitle" style={{ textAlign: 'center' }}>
+            Développement Mobile, Fullstack et Cyber-sécurité d'excellence. 
+            Nous formons les jeunes talents guinéens et créons des solutions technologiques 
+            pour transformer les communautés.
+          </p>
+
+          {/* CTA Buttons */}
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '72px' }}>
+            <button className="hero-btn-primary" onClick={() => scrollToSection('#contact')}>
+              <Zap size={18} />
               Demander un Devis
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </span>
-          </button>
-          
-          <button className="group bg-gradient-to-r from-primary-600/20 to-cyan-600/20 hover:from-primary-600/30 hover:to-cyan-600/30 text-white font-bold px-10 py-5 rounded-2xl transition-all duration-300 border-2 border-primary-400/50 hover:border-primary-400 backdrop-blur-lg hover:scale-105">
-            <span className="flex items-center gap-3 text-lg">
-              <Globe className="w-5 h-5" />
+              <ArrowRight size={18} className="btn-arrow" />
+            </button>
+            <button className="hero-btn-secondary" onClick={() => scrollToSection('#projects')}>
               Voir Nos Projets
-            </span>
-          </button>
-        </div>
-        
-        {/* Trust indicators */}
-        <div className="mt-12 flex flex-wrap justify-center items-center gap-8">
-          <div className="flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 px-4 py-2 rounded-full border border-primary-400/30">
-            <Shield className="w-4 h-4 text-primary-400" />
-            <span className="text-primary-200 font-medium">Certifié ISO 27001</span>
+            </button>
           </div>
-          <div className="flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 px-4 py-2 rounded-full border border-cyan-400/30">
-            <Globe className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-200 font-medium">Partenaire Google Cloud</span>
+
+          {/* Stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '16px', maxWidth: '680px', margin: '0 auto 56px' }}>
+            <div className="stat-card">
+              <div className="stat-icon"><Code size={20} /></div>
+              <div className="stat-number">50+</div>
+              <div className="stat-label">Projets Livrés</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon"><Shield size={20} /></div>
+              <div className="stat-number">100%</div>
+              <div className="stat-label">Sécurité Certifiée</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon"><Heart size={20} /></div>
+              <div className="stat-number">30+</div>
+              <div className="stat-label">Jeunes Formés</div>
+            </div>
           </div>
-          <div className="flex items-center gap-2 bg-gradient-to-r from-teal-500/20 to-primary-500/20 px-4 py-2 rounded-full border border-teal-400/30">
-            <Sparkles className="w-4 h-4 text-teal-400" />
-            <span className="text-teal-200 font-medium">Startup Reconnue</span>
+
+          {/* Trust pills */}
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="trust-pill">
+              <Shield size={13} color="#00B4D8" />
+              Certifié ISO 27001
+            </div>
+            <div className="trust-pill">
+              <Code size={13} color="#00B4D8" />
+              Partenaire Google Cloud
+            </div>
+            <div className="trust-pill">
+              <Heart size={13} color="#00B4D8" />
+              Startup Reconnue
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-8 h-12 border-2 border-primary-400/50 rounded-full flex justify-center backdrop-blur-sm">
-          <div className="w-1 h-4 bg-gradient-to-b from-primary-400 to-cyan-400 rounded-full mt-2 animate-pulse"></div>
+
+        {/* Scroll indicator */}
+        <div className="scroll-indicator">
+          <div className="scroll-dot" />
+          <div className="scroll-line" />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

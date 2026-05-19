@@ -1,243 +1,317 @@
+'use client';
+
 import React from 'react';
-import { Mail, Award, Code, Shield, Smartphone, Globe, User } from 'lucide-react';
+import { Mail, Globe, User, Award } from 'lucide-react';
 
 const TeamSection: React.FC = () => {
   const teamMembers = [
     {
-      name: "Amadou Bailo BARRY",
-      role: "Développeur Back-end",
-      bio: "Passionné par les technologies web et l'impact social. 3 ans d'expérience dans le développement d'applications.",
-      skills: [ "Node.js", "TypeScript", "PostgreSQL", "github"],
-      avatar: "/api/placeholder/200/200",
-      social: {
-        github: "https://github.com/Bailosama",
-        linkedin: "#",
-        email: "karim@ngtech.com"
-      },
-      icon: Code,
-      joinYear: "2021"
+      name: 'Amadou Bailo BARRY',
+      role: 'Développeur Back-end',
+      bio: 'Passionné par les technologies web et l\'impact social. 3 ans d\'expérience dans le développement d\'applications.',
+      skills: ['Node.js', 'TypeScript', 'PostgreSQL', 'GitHub'],
+      social: { github: 'https://github.com/Bailosama', linkedin: '#', email: 'karim@ngtech.com' },
+      initials: 'AB',
+      color: '#00B4D8',
     },
     {
-      name: "Aminata Bâ",
-      role: "Expert Cyber-sécurité",
-      bio: "Spécialiste en sécurité des systèmes et audit de vulnérabilités. Engagée dans la protection des données des communautés.",
-      skills: ["Pentesting", "ISO 27001", "Cryptographie", "RGPD"],
-      avatar: "/api/placeholder/200/200",
-      social: {
-        github: "#",
-        linkedin: "#",
-        email: "aminata@ngtech.com"
-      },
-      icon: Shield,
-      joinYear: "2022"
+      name: 'Aminata Bâ',
+      role: 'Expert Cyber-sécurité',
+      bio: 'Spécialiste en sécurité des systèmes et audit de vulnérabilités. Engagée dans la protection des données.',
+      skills: ['Pentesting', 'ISO 27001', 'Cryptographie', 'RGPD'],
+      social: { github: '#', linkedin: '#', email: 'aminata@ngtech.com' },
+      initials: 'AB',
+      color: '#0077A8',
     },
     {
-      name: "Moussa Touré",
-      role: "Développeur Mobile",
-      bio: "Expert en applications mobiles natives et hybrides. Focus sur l'accessibilité et l'inclusion numérique.",
-      skills: ["React Native", "Flutter", "iOS", "Android"],
-      avatar: "/api/placeholder/200/200",
-      social: {
-        github: "#",
-        linkedin: "#",
-        email: "moussa@ngtech.com"
-      },
-      icon: Smartphone,
-      joinYear: "2021"
+      name: 'Moussa Touré',
+      role: 'Développeur Mobile',
+      bio: 'Expert en applications mobiles natives et hybrides. Focus sur l\'accessibilité et l\'inclusion numérique.',
+      skills: ['React Native', 'Flutter', 'iOS', 'Android'],
+      social: { github: '#', linkedin: '#', email: 'moussa@ngtech.com' },
+      initials: 'MT',
+      color: '#005F82',
     },
     {
-      name: "Fatoumata Camara",
-      role: "UI/UX Designer",
-      bio: "Créative passionnée par le design centré sur l'utilisateur. Spécialisée dans les interfaces pour applications communautaires.",
-      skills: ["Figma", "Adobe XD", "Prototyping", "Design System"],
-      avatar: "/api/placeholder/200/200",
-      social: {
-        github: "#",
-        linkedin: "#",
-        email: "fatoumata@ngtech.com"
-      },
-      icon: Code,
-      joinYear: "2023"
+      name: 'Fatoumata Camara',
+      role: 'UI/UX Designer',
+      bio: 'Créative passionnée par le design centré sur l\'utilisateur. Spécialisée dans les interfaces communautaires.',
+      skills: ['Figma', 'Adobe XD', 'Prototyping', 'Design System'],
+      social: { github: '#', linkedin: '#', email: 'fatoumata@ngtech.com' },
+      initials: 'FC',
+      color: '#00B4D8',
     },
     {
-      name: "Ibrahim Konaté",
-      role: "DevOps Engineer",
-      bio: "Expert en infrastructure cloud et déploiement continu. Optimise les performances pour un impact maximal.",
-      skills: ["Docker", "Kubernetes", "AWS", "CI/CD"],
-      avatar: "/api/placeholder/200/200",
-      social: {
-        github: "#",
-        linkedin: "#",
-        email: "ibrahim@ngtech.com"
-      },
-      icon: Code,
-      joinYear: "2022"
+      name: 'Ibrahim Konaté',
+      role: 'DevOps Engineer',
+      bio: 'Expert en infrastructure cloud et déploiement continu. Optimise les performances pour un impact maximal.',
+      skills: ['Docker', 'Kubernetes', 'AWS', 'CI/CD'],
+      social: { github: '#', linkedin: '#', email: 'ibrahim@ngtech.com' },
+      initials: 'IK',
+      color: '#0077A8',
     },
     {
-      name: "Mariam Sylla",
-      role: "Product Manager",
-      bio: "Passionnée par l'innovation sociale. Connecte les besoins communautaires avec les solutions technologiques.",
-      skills: ["Agile", "Scrum", "Product Strategy", "User Research"],
-      avatar: "/api/placeholder/200/200",
-      social: {
-        github: "#",
-        linkedin: "#",
-        email: "mariam@ngtech.com"
-      },
-      icon: Code,
-      joinYear: "2023"
-    }
+      name: 'Mariam Sylla',
+      role: 'Product Manager',
+      bio: 'Passionnée par l\'innovation sociale. Connecte les besoins communautaires avec les solutions technologiques.',
+      skills: ['Agile', 'Scrum', 'Product Strategy', 'User Research'],
+      social: { github: '#', linkedin: '#', email: 'mariam@ngtech.com' },
+      initials: 'MS',
+      color: '#005F82',
+    },
+  ];
+
+  const stats = [
+    { value: '30+', label: 'Jeunes Talents' },
+    { value: '15', label: 'Projets Sociaux' },
+    { value: '8', label: 'Certifications' },
+    { value: '4.9', label: 'Satisfaction Client' },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-teal-900 via-primary-900 to-cyan-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Animated background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-80 h-80 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-3000"></div>
-        </div>
-        
-        {/* Header */}
-        <div className="text-center mb-16 relative z-10">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-400 to-primary-400 text-transparent bg-clip-text mb-4">
-            <Award className="w-5 h-5 text-teal-400" />
-            <span className="text-sm font-semibold uppercase tracking-wider">Notre Équipe</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="block text-white drop-shadow-2xl">Jeunes</span>
-            <span className="block bg-gradient-to-r from-teal-400 via-primary-400 to-cyan-400 text-transparent bg-clip-text drop-shadow-2xl">Talents</span>
-          </h2>
-          <p className="text-xl text-teal-100 max-w-4xl mx-auto leading-relaxed font-medium">
-            Une équipe dynamique de jeunes passionnés, alliant expertise technique 
-            <span className="block mt-2 text-teal-200">et engagement social pour créer un impact positif durable.</span>
-          </p>
-        </div>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+        .team-root {
+          background: #F8FCFE;
+          padding: 100px 0;
+        }
+        .team-stat-card {
+          background: white;
+          border: 1px solid rgba(0,180,216,0.15);
+          border-radius: 16px;
+          padding: 28px 20px;
+          text-align: center;
+          transition: all 0.25s ease;
+        }
+        .team-stat-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 36px rgba(0,180,216,0.12);
+        }
+        .team-stat-num {
+          font-family: 'Syne', sans-serif;
+          font-size: 36px;
+          font-weight: 800;
+          color: #00B4D8;
+          line-height: 1;
+          margin-bottom: 6px;
+        }
+        .team-stat-label {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          color: #6B7280;
+        }
+        .member-card {
+          background: white;
+          border: 1px solid #F0F0F0;
+          border-radius: 20px;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+        .member-card:hover {
+          border-color: rgba(0,180,216,0.2);
+          box-shadow: 0 16px 48px rgba(0,180,216,0.1);
+          transform: translateY(-4px);
+        }
+        .member-header {
+          padding: 28px 28px 0;
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 16px;
+        }
+        .member-avatar {
+          width: 60px; height: 60px;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Syne', sans-serif;
+          font-size: 18px;
+          font-weight: 800;
+          color: white;
+          flex-shrink: 0;
+        }
+        .member-role-badge {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: #00B4D8;
+          background: rgba(0,180,216,0.1);
+          border-radius: 100px;
+          padding: 4px 10px;
+          white-space: nowrap;
+        }
+        .member-body {
+          padding: 16px 28px 28px;
+        }
+        .member-name {
+          font-family: 'Syne', sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          color: #0A1628;
+          margin: 0 0 4px;
+        }
+        .member-role {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          color: #6B7280;
+          margin: 0 0 12px;
+        }
+        .member-bio {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: #9CA3AF;
+          line-height: 1.6;
+          margin: 0 0 16px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .skill-tag {
+          display: inline-block;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12px;
+          font-weight: 500;
+          color: #374151;
+          background: #F9FAFB;
+          border: 1px solid #E5E7EB;
+          border-radius: 6px;
+          padding: 4px 10px;
+          margin: 3px 3px 0 0;
+        }
+        .member-socials {
+          display: flex;
+          gap: 8px;
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid #F9FAFB;
+        }
+        .social-btn {
+          width: 34px; height: 34px;
+          border-radius: 8px;
+          border: 1px solid #E5E7EB;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #9CA3AF;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          text-decoration: none;
+        }
+        .social-btn:hover {
+          border-color: #00B4D8;
+          color: #00B4D8;
+          background: rgba(0,180,216,0.05);
+        }
+        .join-banner {
+          margin-top: 72px;
+          background: white;
+          border: 1px solid rgba(0,180,216,0.2);
+          border-radius: 20px;
+          padding: 40px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .join-banner::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #00B4D8, #0077A8);
+        }
+        .join-btn {
+          background: #00B4D8;
+          color: white;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          padding: 14px 32px;
+          border-radius: 12px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          margin-top: 20px;
+        }
+        .join-btn:hover {
+          background: #0096B4;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0,180,216,0.3);
+        }
+      `}</style>
 
-        {/* Team Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto relative z-10">
-          <div className="bg-gradient-to-br from-teal-600/20 to-primary-600/20 backdrop-blur-lg rounded-2xl p-6 border border-teal-400/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/25">
-            <div className="text-4xl font-bold bg-gradient-to-r from-teal-400 to-primary-400 text-transparent bg-clip-text mb-2">30+</div>
-            <div className="text-teal-200 font-medium">Jeunes Talents</div>
+      <section className="team-root" id="team">
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#00B4D8', marginBottom: '12px' }}>Notre Équipe</div>
+            <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(36px, 5vw, 52px)', fontWeight: 800, color: '#0A1628', lineHeight: 1.1, letterSpacing: '-0.02em', margin: '0 0 20px' }}>
+              Jeunes <span style={{ color: '#00B4D8' }}>Talents</span>
+            </h2>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '17px', color: '#6B7280', lineHeight: 1.65, maxWidth: '520px', margin: '0 auto' }}>
+              Une équipe dynamique de passionnés alliant expertise technique et engagement social.
+            </p>
           </div>
-          <div className="bg-gradient-to-br from-primary-600/20 to-cyan-600/20 backdrop-blur-lg rounded-2xl p-6 border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/25">
-            <div className="text-4xl font-bold bg-gradient-to-r from-primary-400 to-cyan-400 text-transparent bg-clip-text mb-2">15</div>
-            <div className="text-primary-200 font-medium">Projets Sociaux</div>
-          </div>
-          <div className="bg-gradient-to-br from-cyan-600/20 to-teal-600/20 backdrop-blur-lg rounded-2xl p-6 border border-cyan-400/30 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
-            <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 text-transparent bg-clip-text mb-2">8</div>
-            <div className="text-cyan-200 font-medium">Certifications</div>
-          </div>
-          <div className="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-6 border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/25">
-            <div className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text mb-2">4.9</div>
-            <div className="text-yellow-200 font-medium">Satisfaction Client</div>
-          </div>
-        </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-          {teamMembers.map((member, index) => {
-            const IconComponent = member.icon;
-            return (
-              <div
-                key={index}
-                className="group bg-gradient-to-br from-teal-800/30 to-primary-800/30 backdrop-blur-lg rounded-2xl border border-teal-400/30 hover:border-teal-400/60 transition-all duration-300 overflow-hidden hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/25"
-              >
-                {/* Avatar and Header */}
-                <div className="relative p-6 pb-0">
-                  <div className="flex items-start justify-between mb-6">
-                    {/* Avatar placeholder with gradient */}
-                    <div className="w-24 h-24 bg-gradient-to-br from-teal-400 to-primary-400 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                      <span className="text-3xl font-bold text-white drop-shadow-lg">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    
-                    {/* Join year badge */}
-                    <div className="bg-gradient-to-r from-teal-600/80 to-primary-600/80 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-bold text-white shadow-lg">
-                      Depuis {member.joinYear}
-                    </div>
-                  </div>
-                  
-                  {/* Role icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-teal-600 to-primary-600 rounded-xl flex items-center justify-center mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all">
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
+          {/* Stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '16px', maxWidth: '700px', margin: '0 auto 64px' }}>
+            {stats.map((s, i) => (
+              <div key={i} className="team-stat-card">
+                <div className="team-stat-num">{s.value}</div>
+                <div className="team-stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Team grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+            {teamMembers.map((m, i) => (
+              <div key={i} className="member-card">
+                <div className="member-header">
+                  <div className="member-avatar" style={{ background: m.color }}>{m.initials}</div>
+                  <div className="member-role-badge">{m.role.split(' ')[0]}</div>
                 </div>
-
-                {/* Content */}
-                <div className="px-6 pb-6">
-                  {/* Name and Role */}
-                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-primary-400 group-hover:bg-clip-text transition-all duration-300">
-                    {member.name}
-                  </h3>
-                  <p className="bg-gradient-to-r from-teal-400 to-primary-400 text-transparent bg-clip-text text-sm font-bold mb-4">
-                    {member.role}
-                  </p>
-
-                  {/* Bio */}
-                  <p className="text-teal-100 text-sm mb-6 line-clamp-3 font-medium">
-                    {member.bio}
-                  </p>
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {member.skills.slice(0, 3).map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="bg-gradient-to-r from-teal-600/30 to-primary-600/30 text-teal-200 px-3 py-1 rounded-lg text-xs font-medium border border-teal-400/30"
-                      >
-                        {skill}
-                      </span>
+                <div className="member-body">
+                  <h3 className="member-name">{m.name}</h3>
+                  <p className="member-role">{m.role}</p>
+                  <p className="member-bio">{m.bio}</p>
+                  <div>
+                    {m.skills.slice(0, 3).map((sk, si) => (
+                      <span key={si} className="skill-tag">{sk}</span>
                     ))}
-                    {member.skills.length > 3 && (
-                      <span className="bg-gradient-to-r from-teal-600/30 to-primary-600/30 text-teal-200 px-3 py-1 rounded-lg text-xs font-medium border border-teal-400/30">
-                        +{member.skills.length - 3}
-                      </span>
-                    )}
+                    {m.skills.length > 3 && <span className="skill-tag">+{m.skills.length - 3}</span>}
                   </div>
-
-                  {/* Social Links */}
-                  <div className="flex items-center gap-4">
-                    <a
-                      href={member.social.github}
-                      className="w-10 h-10 bg-gradient-to-r from-teal-600/30 to-primary-600/30 rounded-lg flex items-center justify-center text-teal-400 hover:text-white hover:from-teal-500 hover:to-primary-500 transition-all duration-300 border border-teal-400/30 hover:border-teal-400"
-                    >
-                      <Globe className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={member.social.linkedin}
-                      className="w-10 h-10 bg-gradient-to-r from-primary-600/30 to-cyan-600/30 rounded-lg flex items-center justify-center text-primary-400 hover:text-white hover:from-primary-500 hover:to-cyan-500 transition-all duration-300 border border-primary-400/30 hover:border-primary-400"
-                    >
-                      <User className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={`mailto:${member.social.email}`}
-                      className="w-10 h-10 bg-gradient-to-r from-cyan-600/30 to-teal-600/30 rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:from-cyan-500 hover:to-teal-500 transition-all duration-300 border border-cyan-400/30 hover:border-cyan-400"
-                    >
-                      <Mail className="w-5 h-5" />
-                    </a>
+                  <div className="member-socials">
+                    <a href={m.social.github} className="social-btn" target="_blank" rel="noopener noreferrer"><Globe size={15} /></a>
+                    <a href={m.social.linkedin} className="social-btn" target="_blank" rel="noopener noreferrer"><User size={15} /></a>
+                    <a href={`mailto:${m.social.email}`} className="social-btn"><Mail size={15} /></a>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* Join Us CTA */}
-        <div className="mt-20 text-center relative z-10">
-          <div className="inline-flex items-center gap-6 bg-gradient-to-r from-teal-600/20 to-primary-600/20 backdrop-blur-lg rounded-2xl px-8 py-4 border-2 border-teal-400/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/25">
-            <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-primary-400 rounded-xl flex items-center justify-center">
-              <Award className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-teal-100 font-semibold text-lg">Vous êtes un jeune talent passionné ?</span>
-            <button className="bg-gradient-to-r from-teal-500 to-primary-500 hover:from-teal-600 hover:to-primary-600 text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-teal-500/40">
-              Rejoignez-nous
-            </button>
+          {/* Join banner */}
+          <div className="join-banner">
+            <Award size={32} color="#00B4D8" style={{ marginBottom: '12px' }} />
+            <h3 style={{ fontFamily: 'Syne, sans-serif', fontSize: '24px', fontWeight: 700, color: '#0A1628', margin: '0 0 8px' }}>
+              Vous êtes un jeune talent passionné ?
+            </h3>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', color: '#6B7280', margin: 0 }}>
+              Rejoignez notre équipe et participez à la transformation numérique de la Guinée.
+            </p>
+            <button className="join-btn">Rejoignez-nous →</button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

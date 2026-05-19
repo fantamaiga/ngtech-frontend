@@ -1,17 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -21,113 +18,163 @@ const Navigation: React.FC = () => {
     { name: 'Services', href: '#services' },
     { name: 'Projets', href: '#projects' },
     { name: 'Équipe', href: '#team' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-neutral-900/95 backdrop-blur-md border-b border-neutral-800' 
-        : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src="/logo.png" 
-              alt="NGTech Logo" 
-              className="w-12 h-12 object-contain"
-            />
-          </div>
+    <>
+      <style>{`
+        .nav-root {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 50;
+          transition: all 0.4s ease;
+        }
+        .nav-root.scrolled {
+          background: rgba(255,255,255,0.92);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(0,180,216,0.12);
+          box-shadow: 0 1px 40px rgba(0,180,216,0.08);
+        }
+        .nav-root.top {
+          background: transparent;
+        }
+        .nav-link {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          color: #374151;
+          letter-spacing: 0.01em;
+          padding: 6px 4px;
+          position: relative;
+          cursor: pointer;
+          border: none;
+          background: none;
+          transition: color 0.2s;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          height: 2px;
+          background: #00B4D8;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.25s ease;
+          border-radius: 2px;
+        }
+        .nav-link:hover { color: #00B4D8; }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-cta {
+          background: #00B4D8;
+          color: white;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 10px 22px;
+          border-radius: 10px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          letter-spacing: 0.01em;
+        }
+        .nav-cta:hover {
+          background: #0096B4;
+          transform: translateY(-1px);
+          box-shadow: 0 8px 24px rgba(0,180,216,0.3);
+        }
+        .mobile-nav {
+          background: rgba(255,255,255,0.98);
+          backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(0,180,216,0.1);
+        }
+        .mobile-link {
+          display: block;
+          width: 100%;
+          text-align: left;
+          padding: 14px 20px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: #1F2937;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s;
+          border-radius: 10px;
+        }
+        .mobile-link:hover {
+          background: rgba(0,180,216,0.08);
+          color: #00B4D8;
+          padding-left: 28px;
+        }
+      `}</style>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-neutral-300 hover:text-primary-400 transition-colors font-medium"
-              >
-                {item.name}
+      <nav className={`nav-root ${isScrolled ? 'scrolled' : 'top'}`}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '72px' }}>
+            {/* Logo */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img src="/logo.png" alt="NGTech" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
+            </div>
+
+            {/* Desktop Nav */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }} className="hidden md:flex">
+              {navItems.map(item => (
+                <button key={item.name} onClick={() => scrollToSection(item.href)} className="nav-link">
+                  {item.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Desktop CTA */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }} className="hidden md:flex">
+              <a href="tel:+224622123456" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#6B7280', fontSize: '13px', textDecoration: 'none', transition: 'color 0.2s' }}>
+                <Phone size={14} />
+                <span style={{ fontFamily: 'DM Sans, sans-serif' }}>+224 622 123 456</span>
+              </a>
+              <button className="nav-cta" onClick={() => scrollToSection('#contact')}>
+                Demander un Devis
               </button>
-            ))}
-          </div>
+            </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="tel:+224622123456"
-              className="text-neutral-400 hover:text-primary-400 transition-colors flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4" />
-              <span className="text-sm">+224 622 123 456</span>
-            </a>
-            <button
-              onClick={() => scrollToSection('#contact')}
-              className="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors font-medium"
-            >
-              Demander un Devis
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+            {/* Mobile toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-neutral-300 hover:text-primary-400 transition-colors"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#374151', padding: '4px' }}
+              className="md:hidden"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-neutral-900/95 backdrop-blur-md border-t border-neutral-800">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-neutral-300 hover:text-primary-400 hover:bg-neutral-800 rounded-lg transition-colors font-medium"
-                >
+          <div className="mobile-nav md:hidden">
+            <div style={{ padding: '12px 16px 20px' }}>
+              {navItems.map(item => (
+                <button key={item.name} onClick={() => scrollToSection(item.href)} className="mobile-link">
                   {item.name}
                 </button>
               ))}
-              
-              <div className="pt-4 pb-2 border-t border-neutral-800">
-                <div className="px-3 py-2">
-                  <a
-                    href="tel:+224622123456"
-                    className="flex items-center gap-2 text-neutral-400 hover:text-primary-400 transition-colors"
-                  >
-                    <Phone className="w-4 h-4" />
-                    <span className="text-sm">+224 622 123 456</span>
-                  </a>
-                </div>
-                <div className="px-3 py-2">
-                  <button
-                    onClick={() => scrollToSection('#contact')}
-                    className="w-full bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors font-medium"
-                  >
-                    Demander un Devis
-                  </button>
-                </div>
+              <div style={{ marginTop: '16px', padding: '0 4px' }}>
+                <button className="nav-cta" style={{ width: '100%' }} onClick={() => scrollToSection('#contact')}>
+                  Demander un Devis
+                </button>
               </div>
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 

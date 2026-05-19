@@ -8,31 +8,15 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-cyan-900">
+    <div style={{ background: '#F8FCFE', minHeight: '100vh' }}>
       <Navigation />
-      
       <main>
-        <section id="home">
-          <HeroSection />
-        </section>
-        
-        <section id="services">
-          <ServicesSection />
-        </section>
-        
-        <section id="projects">
-          <ProjectsSection />
-        </section>
-        
-        <section id="team">
-          <TeamSection />
-        </section>
-        
-        <section id="contact">
-          <ContactSection />
-        </section>
+        <HeroSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <TeamSection />
+        <ContactSection />
       </main>
-      
       <Footer />
     </div>
   );

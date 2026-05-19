@@ -88,28 +88,28 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-900 via-cyan-900 to-teal-900">
+    <section className="py-24 bg-gradient-to-br from-[#FFFFFF] via-[#F0F9FF] to-[#F8FDFF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Animated background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-4000"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-[#00B4D8] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#0077A8] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-[#023E8A] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" style={{ animationDelay: '4s' }}></div>
         </div>
         
         {/* Header */}
         <div className="text-center mb-16 relative z-10">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-400 to-cyan-400 text-transparent bg-clip-text mb-4">
-            <Send className="w-5 h-5 text-primary-400" />
-            <span className="text-sm font-semibold uppercase tracking-wider">Contact & Devis</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#00B4D8]/10 to-[#0077A8]/10 border border-[#00B4D8]/20 px-5 py-2.5 rounded-full mb-6">
+            <Send className="w-5 h-5 text-[#00B4D8]" />
+            <span className="text-sm font-semibold uppercase tracking-wider text-[#0A0A0A]">Contact & Devis</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="block text-white drop-shadow-2xl">Démarrons</span>
-            <span className="block bg-gradient-to-r from-primary-400 via-cyan-400 to-teal-400 text-transparent bg-clip-text drop-shadow-2xl">Ensemble</span>
+            <span className="block text-[#0A0A0A]">Démarrons</span>
+            <span className="block bg-gradient-to-r from-[#00B4D8] via-[#0077A8] to-[#023E8A] text-transparent bg-clip-text">Ensemble</span>
           </h2>
-          <p className="text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-medium">
+          <p className="text-xl text-[#4A5568] max-w-4xl mx-auto leading-relaxed font-medium">
             Parlons de votre projet. Notre équipe d'experts vous accompagne 
-            <span className="block mt-2 text-primary-200">de la conception à la réalisation pour un impact maximal.</span>
+            <span className="block mt-2 text-[#718096]">de la conception à la réalisation pour un impact maximal.</span>
           </p>
         </div>
 
@@ -117,52 +117,52 @@ const ContactSection: React.FC = () => {
           {/* Contact Information */}
           <div className="lg:col-span-1 space-y-8">
             <div>
-              <h3 className="text-3xl font-bold text-white mb-8 bg-gradient-to-r from-primary-400 to-cyan-400 text-transparent bg-clip-text">Contactez-nous</h3>
+              <h3 className="text-3xl font-bold text-[#0A0A0A] mb-8 bg-gradient-to-r from-[#00B4D8] to-[#0077A8] text-transparent bg-clip-text">Contactez-nous</h3>
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-primary-600/20 to-cyan-600/20 backdrop-blur-lg rounded-2xl p-6 border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/25">
+                <div className="group bg-white rounded-2xl p-6 border border-[#E2E8F0] hover:border-[#00B4D8]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#00B4D8]/10 hover:-translate-y-1">
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-primary-400 to-cyan-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#00B4D8] to-[#0077A8] rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Phone className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <div className="text-white font-bold text-lg">Téléphone</div>
-                      <div className="text-primary-200 font-medium">+224 622 123 456</div>
+                      <div className="text-[#0A0A0A] font-bold text-lg">Téléphone</div>
+                      <div className="text-[#4A5568] font-medium">+224 622 123 456</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-cyan-600/20 to-teal-600/20 backdrop-blur-lg rounded-2xl p-6 border border-cyan-400/30 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
+                <div className="group bg-white rounded-2xl p-6 border border-[#E2E8F0] hover:border-[#0077A8]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#0077A8]/10 hover:-translate-y-1">
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#0077A8] to-[#023E8A] rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Mail className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <div className="text-white font-bold text-lg">Email</div>
-                      <div className="text-cyan-200 font-medium">contact@ngtech.com</div>
+                      <div className="text-[#0A0A0A] font-bold text-lg">Email</div>
+                      <div className="text-[#4A5568] font-medium">contact@ngtech.com</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-teal-600/20 to-primary-600/20 backdrop-blur-lg rounded-2xl p-6 border border-teal-400/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/25">
+                <div className="group bg-white rounded-2xl p-6 border border-[#E2E8F0] hover:border-[#023E8A]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#023E8A]/10 hover:-translate-y-1">
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-primary-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#023E8A] to-[#00B4D8] rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <MapPin className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <div className="text-white font-bold text-lg">Adresse</div>
-                      <div className="text-teal-200 font-medium">Conakry, Guinée</div>
+                      <div className="text-[#0A0A0A] font-bold text-lg">Adresse</div>
+                      <div className="text-[#4A5568] font-medium">Conakry, Guinée</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-600/20 to-orange-600/20 backdrop-blur-lg rounded-2xl p-6 border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/25">
+                <div className="group bg-white rounded-2xl p-6 border border-[#E2E8F0] hover:border-[#F59E0B]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#F59E0B]/10 hover:-translate-y-1">
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-xl flex items-center justify-center flex-shrink-0 shadow-xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#F59E0B] to-[#D97706] rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Clock className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <div className="text-white font-bold text-lg">Disponibilité</div>
-                      <div className="text-yellow-200 font-medium">Lun-Ven: 9h-18h</div>
+                      <div className="text-[#0A0A0A] font-bold text-lg">Disponibilité</div>
+                      <div className="text-[#4A5568] font-medium">Lun-Ven: 9h-18h</div>
                     </div>
                   </div>
                 </div>
@@ -170,19 +170,19 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Quick Info */}
-            <div className="bg-gradient-to-r from-primary-600/20 to-cyan-600/20 backdrop-blur-lg rounded-2xl p-8 border-2 border-primary-400/30 hover:border-primary-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/25">
-              <h4 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-cyan-400 text-transparent bg-clip-text mb-4">Réponse rapide</h4>
-              <p className="text-primary-100 text-lg mb-6 font-medium">
+            <div className="bg-white rounded-2xl p-8 border-2 border-[#E2E8F0] hover:border-[#00B4D8]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#00B4D8]/10 hover:-translate-y-1">
+              <h4 className="text-2xl font-bold bg-gradient-to-r from-[#00B4D8] to-[#0077A8] text-transparent bg-clip-text mb-4">Réponse rapide</h4>
+              <p className="text-[#4A5568] text-lg mb-6 font-medium">
                 Nous nous engageons à vous répondre dans les 24 heures ouvrées.
               </p>
               <div className="space-y-3">
-                <div className="flex items-center gap-3 bg-gradient-to-r from-green-600/20 to-emerald-600/20 px-4 py-3 rounded-xl border border-green-400/30">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-green-200 font-medium">Devis gratuit</span>
+                <div className="flex items-center gap-3 bg-[#F0F9FF] px-4 py-3 rounded-xl border border-[#00B4D8]/20">
+                  <CheckCircle className="w-5 h-5 text-[#10B981]" />
+                  <span className="text-[#0A0A0A] font-medium">Devis gratuit</span>
                 </div>
-                <div className="flex items-center gap-3 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 px-4 py-3 rounded-xl border border-blue-400/30">
-                  <CheckCircle className="w-5 h-5 text-blue-400" />
-                  <span className="text-blue-200 font-medium">Sans engagement</span>
+                <div className="flex items-center gap-3 bg-[#F0F9FF] px-4 py-3 rounded-xl border border-[#00B4D8]/20">
+                  <CheckCircle className="w-5 h-5 text-[#10B981]" />
+                  <span className="text-[#0A0A0A] font-medium">Sans engagement</span>
                 </div>
               </div>
             </div>
@@ -190,10 +190,10 @@ const ContactSection: React.FC = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-gradient-to-br from-primary-800/30 to-cyan-800/30 backdrop-blur-lg rounded-2xl border-2 border-primary-400/30 p-8 hover:border-primary-400/60 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/25">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl border-2 border-[#E2E8F0] p-8 hover:border-[#00B4D8]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#00B4D8]/10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-white font-bold mb-3 text-lg">
+                  <label htmlFor="name" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                     Nom complet *
                   </label>
                   <input
@@ -203,13 +203,13 @@ const ContactSection: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-4 bg-gradient-to-r from-primary-700/30 to-cyan-700/30 border border-primary-400/30 rounded-xl text-white placeholder-primary-300 focus:outline-none focus:border-primary-400 focus:bg-gradient-to-r focus:from-primary-600/40 focus:to-cyan-600/40 transition-all duration-300 font-medium"
+                    className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] placeholder-[#718096] focus:outline-none focus:border-[#00B4D8] focus:bg-white transition-all duration-300 font-medium"
                     placeholder="Jean Dupont"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-white font-bold mb-3 text-lg">
+                  <label htmlFor="email" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                     Email *
                   </label>
                   <input
@@ -219,13 +219,13 @@ const ContactSection: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-4 bg-gradient-to-r from-cyan-700/30 to-teal-700/30 border border-cyan-400/30 rounded-xl text-white placeholder-cyan-300 focus:outline-none focus:border-cyan-400 focus:bg-gradient-to-r focus:from-cyan-600/40 focus:to-teal-600/40 transition-all duration-300 font-medium"
+                    className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] placeholder-[#718096] focus:outline-none focus:border-[#0077A8] focus:bg-white transition-all duration-300 font-medium"
                     placeholder="jean@exemple.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-white font-bold mb-3 text-lg">
+                  <label htmlFor="company" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                     Entreprise
                   </label>
                   <input
@@ -234,13 +234,13 @@ const ContactSection: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-gradient-to-r from-teal-700/30 to-primary-700/30 border border-teal-400/30 rounded-xl text-white placeholder-teal-300 focus:outline-none focus:border-teal-400 focus:bg-gradient-to-r focus:from-teal-600/40 focus:to-primary-600/40 transition-all duration-300 font-medium"
+                    className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] placeholder-[#718096] focus:outline-none focus:border-[#023E8A] focus:bg-white transition-all duration-300 font-medium"
                     placeholder="Votre entreprise"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-white font-bold mb-3 text-lg">
+                  <label htmlFor="phone" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                     Téléphone
                   </label>
                   <input
@@ -249,14 +249,14 @@ const ContactSection: React.FC = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-gradient-to-r from-primary-700/30 to-cyan-700/30 border border-primary-400/30 rounded-xl text-white placeholder-primary-300 focus:outline-none focus:border-primary-400 focus:bg-gradient-to-r focus:from-primary-600/40 focus:to-cyan-600/40 transition-all duration-300 font-medium"
+                    className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] placeholder-[#718096] focus:outline-none focus:border-[#00B4D8] focus:bg-white transition-all duration-300 font-medium"
                     placeholder="+224 622 123 456"
                   />
                 </div>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="service" className="block text-white font-bold mb-3 text-lg">
+                <label htmlFor="service" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                   Service souhaité *
                 </label>
                 <select
@@ -265,17 +265,17 @@ const ContactSection: React.FC = () => {
                   value={formData.service}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-4 bg-gradient-to-r from-cyan-700/30 to-teal-700/30 border border-cyan-400/30 rounded-xl text-white focus:outline-none focus:border-cyan-400 focus:bg-gradient-to-r focus:from-cyan-600/40 focus:to-teal-600/40 transition-all duration-300 font-medium"
+                  className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] focus:outline-none focus:border-[#0077A8] focus:bg-white transition-all duration-300 font-medium"
                 >
-                  <option value="" className="bg-cyan-800">Sélectionnez un service</option>
+                  <option value="">Sélectionnez un service</option>
                   {services.map(service => (
-                    <option key={service} value={service} className="bg-cyan-800">{service}</option>
+                    <option key={service} value={service}>{service}</option>
                   ))}
                 </select>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="projectDescription" className="block text-white font-bold mb-3 text-lg">
+                <label htmlFor="projectDescription" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                   Description du projet *
                 </label>
                 <textarea
@@ -285,14 +285,14 @@ const ContactSection: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-4 bg-gradient-to-r from-teal-700/30 to-primary-700/30 border border-teal-400/30 rounded-xl text-white placeholder-teal-300 focus:outline-none focus:border-teal-400 focus:bg-gradient-to-r focus:from-teal-600/40 focus:to-primary-600/40 transition-all duration-300 resize-none font-medium"
+                  className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] placeholder-[#718096] focus:outline-none focus:border-[#023E8A] focus:bg-white transition-all duration-300 resize-none font-medium"
                   placeholder="Décrivez votre projet, vos objectifs et vos attentes..."
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
-                  <label htmlFor="budget" className="block text-white font-bold mb-3 text-lg">
+                  <label htmlFor="budget" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                     Budget estimé
                   </label>
                   <select
@@ -300,17 +300,17 @@ const ContactSection: React.FC = () => {
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-gradient-to-r from-primary-700/30 to-cyan-700/30 border border-primary-400/30 rounded-xl text-white focus:outline-none focus:border-primary-400 focus:bg-gradient-to-r focus:from-primary-600/40 focus:to-cyan-600/40 transition-all duration-300 font-medium"
+                    className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] focus:outline-none focus:border-[#00B4D8] focus:bg-white transition-all duration-300 font-medium"
                   >
-                    <option value="" className="bg-primary-800">Sélectionnez une fourchette</option>
+                    <option value="">Sélectionnez une fourchette</option>
                     {budgets.map(budget => (
-                      <option key={budget} value={budget} className="bg-primary-800">{budget}</option>
+                      <option key={budget} value={budget}>{budget}</option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="timeline" className="block text-white font-bold mb-3 text-lg">
+                  <label htmlFor="timeline" className="block text-[#0A0A0A] font-bold mb-3 text-lg">
                     Délai souhaité
                   </label>
                   <select
@@ -318,11 +318,11 @@ const ContactSection: React.FC = () => {
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-gradient-to-r from-cyan-700/30 to-teal-700/30 border border-cyan-400/30 rounded-xl text-white focus:outline-none focus:border-cyan-400 focus:bg-gradient-to-r focus:from-cyan-600/40 focus:to-teal-600/40 transition-all duration-300 font-medium"
+                    className="w-full px-4 py-4 bg-[#F0F9FF] border border-[#E2E8F0] rounded-xl text-[#0A0A0A] focus:outline-none focus:border-[#0077A8] focus:bg-white transition-all duration-300 font-medium"
                   >
-                    <option value="" className="bg-cyan-800">Sélectionnez un délai</option>
+                    <option value="">Sélectionnez un délai</option>
                     {timelines.map(timeline => (
-                      <option key={timeline} value={timeline} className="bg-cyan-800">{timeline}</option>
+                      <option key={timeline} value={timeline}>{timeline}</option>
                     ))}
                   </select>
                 </div>
@@ -330,21 +330,21 @@ const ContactSection: React.FC = () => {
 
               {/* Status Messages */}
               {state.isSubmitted && (
-                <div className="mb-6 p-6 bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-2 border-green-400/30 rounded-xl flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-green-400" />
+                <div className="mb-6 p-6 bg-[#F0F9FF] border-2 border-[#10B981]/30 rounded-xl flex items-center gap-4">
+                  <CheckCircle className="w-6 h-6 text-[#10B981]" />
                   <div>
-                    <div className="text-green-400 font-bold text-lg">Message envoyé avec succès !</div>
-                    <div className="text-green-200">Nous vous répondrons dans les 24 heures.</div>
+                    <div className="text-[#10B981] font-bold text-lg">Message envoyé avec succès !</div>
+                    <div className="text-[#4A5568]">Nous vous répondrons dans les 24 heures.</div>
                   </div>
                 </div>
               )}
 
               {state.error && (
-                <div className="mb-6 p-6 bg-gradient-to-r from-red-600/20 to-orange-600/20 border-2 border-red-400/30 rounded-xl flex items-center gap-4">
-                  <AlertCircle className="w-6 h-6 text-red-400" />
+                <div className="mb-6 p-6 bg-[#FEF2F2] border-2 border-[#EF4444]/30 rounded-xl flex items-center gap-4">
+                  <AlertCircle className="w-6 h-6 text-[#EF4444]" />
                   <div>
-                    <div className="text-red-400 font-bold text-lg">Erreur lors de l'envoi</div>
-                    <div className="text-red-200">{state.error}</div>
+                    <div className="text-[#EF4444] font-bold text-lg">Erreur lors de l'envoi</div>
+                    <div className="text-[#4A5568]">{state.error}</div>
                   </div>
                 </div>
               )}
@@ -353,11 +353,11 @@ const ContactSection: React.FC = () => {
               <button
                 type="submit"
                 disabled={state.isLoading}
-                className="w-full bg-gradient-to-r from-primary-500 to-cyan-500 hover:from-primary-600 hover:to-cyan-600 disabled:from-neutral-600 disabled:to-neutral-700 disabled:cursor-not-allowed text-white font-bold px-8 py-5 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 text-lg hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/40"
+                className="w-full bg-gradient-to-r from-[#00B4D8] to-[#0077A8] hover:from-[#0077A8] hover:to-[#023E8A] disabled:from-[#9CA3AF] disabled:to-[#6B7280] disabled:cursor-not-allowed text-white font-bold px-8 py-5 rounded-xl transition-all duration-500 flex items-center justify-center gap-3 text-lg hover:scale-105 shadow-lg shadow-[#00B4D8]/20 hover:shadow-xl hover:shadow-[#00B4D8]/30"
               >
                 {state.isLoading ? (
                   <>
-                    <div className="w-6 h-6 border-3 border-[#00A9C1] border-t-transparent rounded-full animate-spin" />
+                    <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin" />
                     Envoi en cours...
                   </>
                 ) : (

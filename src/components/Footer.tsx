@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, Mail, Phone, MapPin, Globe, MessageCircle, Camera, Play, ArrowUp, Heart, Shield, Code, Smartphone } from 'lucide-react';
+import { Send, Mail, Phone, MapPin, Globe, MessageCircle, ArrowUp, Heart, Shield, Code, Smartphone } from 'lucide-react';
 import { newsletterService } from '@/services/newsletterService';
 import { NewsletterState } from '@/types';
 
@@ -12,283 +12,296 @@ const Footer: React.FC = () => {
     e.preventDefault();
     if (!state.isLoading && state.email) {
       setState(newsletterService.setLoading(true));
-
       try {
-        // Envoyer vers le backend NestJS
         await newsletterService.subscribe(state.email);
-        
-        // Succès
         setState(newsletterService.setSuccess());
       } catch (error) {
-        setState(newsletterService.setError(error instanceof Error ? error.message : 'Erreur lors de l\'inscription'));
+        setState(newsletterService.setError(error instanceof Error ? error.message : 'Erreur'));
       }
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="bg-gradient-to-br from-primary-900 via-cyan-900 to-teal-900 border-t border-primary-400/30">
-      {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-primary-600 via-cyan-600 to-teal-600 py-16 relative overflow-hidden">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-4000"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Mail className="w-5 h-5 text-white" />
-              <span className="text-white font-bold text-sm uppercase tracking-wider">Newsletter</span>
-            </div>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-2xl">
-              Restez Connecté
-            </h3>
-            <p className="text-primary-100 text-lg mb-10 max-w-3xl mx-auto font-medium">
-              Recevez nos dernières actualités, conseils tech et informations sur nos projets à impact social.
-            </p>
-            
-            <form onSubmit={handleSubscribe} className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-6">
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+        .footer-root {
+          background: #0A1628;
+          color: white;
+        }
+        .newsletter-section {
+          background: linear-gradient(135deg, #00B4D8 0%, #0077A8 100%);
+          padding: 64px 24px;
+        }
+        .nl-title {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(28px, 4vw, 40px);
+          font-weight: 800;
+          color: white;
+          margin: 0 0 12px;
+          text-align: center;
+        }
+        .nl-sub {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 16px;
+          color: rgba(255,255,255,0.8);
+          text-align: center;
+          margin: 0 0 36px;
+        }
+        .nl-form {
+          display: flex;
+          gap: 12px;
+          max-width: 480px;
+          margin: 0 auto;
+          flex-wrap: wrap;
+        }
+        .nl-input {
+          flex: 1;
+          min-width: 200px;
+          padding: 14px 18px;
+          border-radius: 12px;
+          border: 2px solid rgba(255,255,255,0.3);
+          background: rgba(255,255,255,0.15);
+          color: white;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 15px;
+          outline: none;
+          transition: border-color 0.2s;
+        }
+        .nl-input::placeholder { color: rgba(255,255,255,0.6); }
+        .nl-input:focus { border-color: white; background: rgba(255,255,255,0.25); }
+        .nl-btn {
+          background: white;
+          color: #00B4D8;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          padding: 14px 24px;
+          border-radius: 12px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+        }
+        .nl-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .footer-body {
+          padding: 72px 24px 48px;
+        }
+        .footer-logo-text {
+          font-family: 'Syne', sans-serif;
+          font-size: 20px;
+          font-weight: 800;
+          color: white;
+          margin-bottom: 16px;
+        }
+        .footer-desc {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: rgba(255,255,255,0.5);
+          line-height: 1.65;
+          margin: 0 0 24px;
+        }
+        .footer-social {
+          width: 38px; height: 38px;
+          border-radius: 10px;
+          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(255,255,255,0.5);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          text-decoration: none;
+        }
+        .footer-social:hover {
+          border-color: #00B4D8;
+          color: #00B4D8;
+          background: rgba(0,180,216,0.1);
+        }
+        .footer-heading {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.35);
+          margin: 0 0 20px;
+        }
+        .footer-link {
+          display: block;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(255,255,255,0.6);
+          text-decoration: none;
+          padding: 5px 0;
+          transition: color 0.2s ease;
+          cursor: pointer;
+          background: none;
+          border: none;
+          text-align: left;
+        }
+        .footer-link:hover { color: white; }
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-icon {
+          width: 32px; height: 32px;
+          border-radius: 8px;
+          background: rgba(0,180,216,0.15);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .contact-text {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: rgba(255,255,255,0.65);
+        }
+        .footer-bottom {
+          border-top: 1px solid rgba(255,255,255,0.06);
+          padding: 24px;
+        }
+        .scroll-top-btn {
+          width: 40px; height: 40px;
+          border-radius: 10px;
+          background: rgba(0,180,216,0.15);
+          border: 1px solid rgba(0,180,216,0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #00B4D8;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .scroll-top-btn:hover {
+          background: #00B4D8;
+          color: white;
+          transform: translateY(-2px);
+        }
+      `}</style>
+
+      <footer className="footer-root">
+        {/* Newsletter */}
+        <div className="newsletter-section">
+          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', textAlign: 'center', marginBottom: '12px' }}>Newsletter</p>
+            <h3 className="nl-title">Restez Connecté</h3>
+            <p className="nl-sub">Recevez nos actualités tech et informations sur nos projets à impact social.</p>
+            <form onSubmit={handleSubscribe} className="nl-form">
               <input
                 type="email"
+                className="nl-input"
+                placeholder="votre@email.com"
                 value={state.email}
-                onChange={(e) => setState(newsletterService.setEmail(e.target.value))}
-                placeholder="Votre email professionnel"
-                className="flex-1 px-6 py-4 rounded-xl bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white focus:bg-white/30 transition-all text-lg font-medium"
+                onChange={e => setState(newsletterService.setEmail(e.target.value))}
                 required
               />
-              <button
-                type="submit"
-                disabled={state.isLoading}
-                className="bg-white text-primary-600 hover:bg-neutral-100 disabled:bg-neutral-300 disabled:cursor-not-allowed font-bold px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 text-lg hover:scale-105 hover:shadow-2xl hover:shadow-white/30"
-              >
-                {state.isLoading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-[#00A9C1] border-t-transparent rounded-full animate-spin" />
-                    Inscription...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    S'inscrire
-                  </>
-                )}
+              <button type="submit" className="nl-btn" disabled={state.isLoading}>
+                <Send size={16} />
+                {state.isLoading ? 'Envoi...' : "S'inscrire"}
               </button>
             </form>
-
             {state.isSubscribed && (
-              <div className="mt-6 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-xl px-6 py-4 inline-block">
-                <div className="text-green-200 font-bold text-lg">✓ Merci pour votre inscription ! Checkez vos emails.</div>
-              </div>
-            )}
-
-            {state.error && (
-              <div className="mt-6 bg-red-500/20 backdrop-blur-sm border border-red-400/30 rounded-xl px-6 py-4 inline-block">
-                <div className="text-red-200 font-bold text-lg">Une erreur est survenue. Veuillez réessayer.</div>
-                <div className="text-red-300 mt-2">{state.error}</div>
-              </div>
+              <p style={{ textAlign: 'center', marginTop: '16px', color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600 }}>
+                ✓ Merci ! Vérifiez vos emails.
+              </p>
             )}
           </div>
         </div>
-      </div>
 
-      {/* Main Footer Content */}
-      <div className="py-16 relative">
-        {/* Animated background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 right-10 w-64 h-64 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse"></div>
-          <div className="absolute bottom-10 left-10 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse animation-delay-2000"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="lg:col-span-1">
-              <div className="mb-8">
-                <img 
-                  src="/logo.png" 
-                  alt="NGTech Logo" 
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-              <p className="text-primary-100 mb-8 leading-relaxed font-medium text-lg">
-                Expertise tech et impact social. Nous développons des solutions innovantes 
-                tout en formant les jeunes talents pour un avenir numérique inclusif.
-              </p>
-              <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-primary-600/30 to-cyan-600/30 backdrop-blur-sm border border-primary-400/30 hover:border-primary-400/60 text-primary-400 hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary-500/25"
-                >
-                  <Globe className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-cyan-600/30 to-teal-600/30 backdrop-blur-sm border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/25"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-teal-600/30 to-primary-600/30 backdrop-blur-sm border border-teal-400/30 hover:border-teal-400/60 text-teal-400 hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-teal-500/25"
-                >
-                  <Camera className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-primary-600/30 to-cyan-600/30 backdrop-blur-sm border border-primary-400/30 hover:border-primary-400/60 text-primary-400 hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary-500/25"
-                >
-                  <Play className="w-6 h-6" />
-                </a>
+        {/* Main footer */}
+        <div className="footer-body">
+          <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px' }}>
+            {/* Brand */}
+            <div style={{ gridColumn: 'span 1' }}>
+              <img src="/logo.png" alt="NGTech" style={{ height: '36px', marginBottom: '16px', filter: 'brightness(10)', opacity: 0.9 }} />
+              <p className="footer-desc">Expertise tech et impact social. Nous développons des solutions innovantes tout en formant les jeunes talents guinéens.</p>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <a href="#" className="footer-social"><Globe size={16} /></a>
+                <a href="#" className="footer-social"><MessageCircle size={16} /></a>
+                <a href="#" className="footer-social"><Mail size={16} /></a>
               </div>
             </div>
 
             {/* Services */}
             <div>
-              <h4 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-cyan-400 text-transparent bg-clip-text mb-8">Services</h4>
-              <ul className="space-y-4">
-                <li>
-                  <a href="#services" className="text-primary-200 hover:text-white transition-colors flex items-center gap-3 font-medium text-lg hover:translate-x-2 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary-400 to-cyan-400 rounded-lg flex items-center justify-center">
-                      <Smartphone className="w-4 h-4 text-white" />
-                    </div>
-                    Développement Mobile
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-cyan-200 hover:text-white transition-colors flex items-center gap-3 font-medium text-lg hover:translate-x-2 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-lg flex items-center justify-center">
-                      <Code className="w-4 h-4 text-white" />
-                    </div>
-                    Développement Fullstack
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-teal-200 hover:text-white transition-colors flex items-center gap-3 font-medium text-lg hover:translate-x-2 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-primary-400 rounded-lg flex items-center justify-center">
-                      <Shield className="w-4 h-4 text-white" />
-                    </div>
-                    Cyber-Audit & Sécurité
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-primary-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform pl-11">
-                    Consulting Technique
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-cyan-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform pl-11">
-                    Formation Équipe
-                  </a>
-                </li>
-              </ul>
+              <p className="footer-heading">Services</p>
+              {[
+                { icon: Smartphone, label: 'Développement Mobile' },
+                { icon: Code, label: 'Développement Fullstack' },
+                { icon: Shield, label: 'Cyber-Audit & Sécurité' },
+                { label: 'Consulting Technique' },
+                { label: 'Formation Équipe' },
+              ].map((item, i) => (
+                <a key={i} href="#services" className="footer-link">{item.label}</a>
+              ))}
             </div>
 
-            {/* Company */}
+            {/* Entreprise */}
             <div>
-              <h4 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 text-transparent bg-clip-text mb-8">Entreprise</h4>
-              <ul className="space-y-4">
-                <li>
-                  <a href="#about" className="text-cyan-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform">
-                    À Propos
-                  </a>
-                </li>
-                <li>
-                  <a href="#team" className="text-teal-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform">
-                    Notre Équipe
-                  </a>
-                </li>
-                <li>
-                  <a href="#projects" className="text-primary-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform">
-                    Projets
-                  </a>
-                </li>
-                <li>
-                  <a href="#impact" className="text-cyan-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform">
-                    Impact Social
-                  </a>
-                </li>
-                <li>
-                  <a href="#careers" className="text-teal-200 hover:text-white transition-colors font-medium text-lg hover:translate-x-2 transition-transform">
-                    Carrières
-                  </a>
-                </li>
-              </ul>
+              <p className="footer-heading">Entreprise</p>
+              {['À Propos', 'Notre Équipe', 'Projets', 'Impact Social', 'Carrières'].map((item, i) => (
+                <a key={i} href="#" className="footer-link">{item}</a>
+              ))}
             </div>
 
             {/* Contact */}
             <div>
-              <h4 className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-primary-400 text-transparent bg-clip-text mb-8">Contact</h4>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-4 bg-gradient-to-r from-primary-600/20 to-cyan-600/20 backdrop-blur-sm rounded-xl p-4 border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-cyan-400 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-primary-200 font-medium">contact@ngtech.com</div>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4 bg-gradient-to-r from-cyan-600/20 to-teal-600/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 hover:border-cyan-400/60 transition-all duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-cyan-200 font-medium">+224 622 123 456</div>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4 bg-gradient-to-r from-teal-600/20 to-primary-600/20 backdrop-blur-sm rounded-xl p-4 border border-teal-400/30 hover:border-teal-400/60 transition-all duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-primary-400 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-teal-200 font-medium">Conakry, Guinée</div>
-                  </div>
-                </li>
-              </ul>
+              <p className="footer-heading">Contact</p>
+              <div className="contact-item">
+                <div className="contact-icon"><Mail size={15} color="#00B4D8" /></div>
+                <span className="contact-text">contact@ngtech.com</span>
+              </div>
+              <div className="contact-item">
+                <div className="contact-icon"><Phone size={15} color="#00B4D8" /></div>
+                <span className="contact-text">+224 622 123 456</span>
+              </div>
+              <div className="contact-item">
+                <div className="contact-icon"><MapPin size={15} color="#00B4D8" /></div>
+                <span className="contact-text">Conakry, Guinée</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t border-primary-400/30 py-12 bg-gradient-to-r from-primary-900/50 to-cyan-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-primary-200 text-lg font-medium">
-              © 2024 NGTech. Tous droits réservés. Fait avec{' '}
-              <Heart className="w-5 h-5 inline text-red-400 fill-current animate-pulse" />{' '}
-              en Guinée.
+        {/* Bottom */}
+        <div className="footer-bottom">
+          <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.35)', margin: 0 }}>
+              © 2024 NGTech. Tous droits réservés. Fait avec <Heart size={12} style={{ display: 'inline', color: '#00B4D8' }} /> en Guinée.
+            </p>
+            <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+              {['Confidentialité', 'Mentions Légales', 'CGV'].map((item, i) => (
+                <a key={i} href="#" style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.35)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'white')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.35)')}>
+                  {item}
+                </a>
+              ))}
+              <button className="scroll-top-btn" onClick={scrollToTop} aria-label="Retour en haut">
+                <ArrowUp size={16} />
+              </button>
             </div>
-            
-            <div className="flex flex-wrap items-center gap-8 text-lg">
-              <a href="#" className="text-primary-200 hover:text-white transition-colors font-medium hover:translate-y-1 transition-transform">
-                Politique de Confidentialité
-              </a>
-              <a href="#" className="text-cyan-200 hover:text-white transition-colors font-medium hover:translate-y-1 transition-transform">
-                Mentions Légales
-              </a>
-              <a href="#" className="text-teal-200 hover:text-white transition-colors font-medium hover:translate-y-1 transition-transform">
-                CGV
-              </a>
-            </div>
-
-            {/* Scroll to top button */}
-            <button
-              onClick={scrollToTop}
-              className="w-14 h-14 bg-gradient-to-br from-primary-500 to-cyan-500 hover:from-primary-600 hover:to-cyan-600 text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-primary-500/40"
-              aria-label="Retour en haut"
-            >
-              <ArrowUp className="w-6 h-6" />
-            </button>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 
