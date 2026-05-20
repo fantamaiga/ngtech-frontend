@@ -138,7 +138,7 @@ const Navigation: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }} className="hidden md:flex">
               <a href="tel:+224622123456" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#6B7280', fontSize: '13px', textDecoration: 'none', transition: 'color 0.2s' }}>
                 <Phone size={14} />
-                <span style={{ fontFamily: 'DM Sans, sans-serif' }}>+224 622 123 456</span>
+                <span style={{ fontFamily: 'DM Sans, sans-serif' }}>+224 621 62 01 40</span>
               </a>
               <button className="nav-cta" onClick={() => scrollToSection('#contact')}>
                 Demander un Devis

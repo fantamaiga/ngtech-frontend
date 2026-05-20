@@ -228,10 +228,10 @@ const ServicesSection: React.FC = () => {
                       </div>
                     ))}
                   </div>
-                  <button className="service-cta">
+                  {/* <button className="service-cta">
                     En savoir plus
                     <ArrowRight size={16} />
-                  </button>
+                  </button> */}
                 </div>
               );
             })}

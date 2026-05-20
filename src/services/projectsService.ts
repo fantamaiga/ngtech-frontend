@@ -12,16 +12,16 @@ async getProjects(): Promise<Project[]> {
     throw new Error('Impossible de charger les projets.');
   }
 },
-  // Récupérer un projet par ID
-  async getProjectById(id: string): Promise<Project> {
+  // Récupérer un projet par slug
+  async getProjectBySlug(slug: string): Promise<Project> {
     try {
-      const response = await api.get<ApiResponse<Project>>(`/projects/${id}`);
+      const response = await api.get<ApiResponse<Project>>(`/projects/${slug}`);
       if (response.data.success && response.data.data) {
         return response.data.data;
       }
       throw new Error(response.data.message || 'Projet non trouvé');
     } catch (error) {
-      console.error(`Erreur API getProjectById(${id}):`, error);
+      console.error(`Erreur API getProjectBySlug(${slug}):`, error);
       throw new Error('Impossible de récupérer le projet');
     }
   },

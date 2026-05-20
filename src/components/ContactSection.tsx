@@ -88,7 +88,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#FFFFFF] via-[#F0F9FF] to-[#F8FDFF]">
+    <section className="py-24 bg-gradient-to-br from-[#FFFFFF] via-[#F0F9FF] to-[#F8FDFF]" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Animated background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -150,7 +150,7 @@ const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-[#0A0A0A] font-bold text-lg">Adresse</div>
-                      <div className="text-[#4A5568] font-medium">Conakry, Guinée</div>
+                      <div className="text-[#4A5568] font-medium">Minière,Conakry, Guinée</div>
                     </div>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-[#0A0A0A] font-bold text-lg">Disponibilité</div>
-                      <div className="text-[#4A5568] font-medium">Lun-Ven: 9h-18h</div>
+                      <div className="text-[#4A5568] font-medium">Lun-Ven: 8h-17h</div>
                     </div>
                   </div>
                 </div>

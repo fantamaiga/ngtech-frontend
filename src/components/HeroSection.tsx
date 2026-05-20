@@ -264,7 +264,7 @@ const HeroSection: React.FC = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '16px', maxWidth: '680px', margin: '0 auto 56px' }}>
             <div className="stat-card">
               <div className="stat-icon"><Code size={20} /></div>
-              <div className="stat-number">50+</div>
+              <div className="stat-number">10+</div>
               <div className="stat-label">Projets Livrés</div>
             </div>
             <div className="stat-card">

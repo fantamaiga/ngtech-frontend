@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Mail, Globe, User, Award } from 'lucide-react';
+import { Mail, Globe, User, Award, Phone } from 'lucide-react';
 
 const TeamSection: React.FC = () => {
   const teamMembers = [
@@ -10,7 +10,7 @@ const TeamSection: React.FC = () => {
       role: 'Développeur Back-end',
       bio: 'Passionné par les technologies web et l\'impact social. 3 ans d\'expérience dans le développement d\'applications.',
       skills: ['Node.js', 'TypeScript', 'PostgreSQL', 'GitHub'],
-      social: { github: 'https://github.com/Bailosama', linkedin: '#', email: 'karim@ngtech.com' },
+      social: { github: 'https://github.com/Bailosama', phone: '620862687', email: 'natsubarry@gmail.com' },
       initials: 'AB',
       color: '#00B4D8',
     },
@@ -24,11 +24,11 @@ const TeamSection: React.FC = () => {
       color: '#0077A8',
     },
     {
-      name: 'Moussa Touré',
-      role: 'Développeur Mobile',
-      bio: 'Expert en applications mobiles natives et hybrides. Focus sur l\'accessibilité et l\'inclusion numérique.',
+      name: 'Mamadou Masroughou BAH',
+      role: 'Développeur Back-end',
+      bio: 'Développeur BAckend. Avec plus de3 ans d\'expérience dans le développement d\'applications.',
       skills: ['React Native', 'Flutter', 'iOS', 'Android'],
-      social: { github: '#', linkedin: '#', email: 'moussa@ngtech.com' },
+      social: { github: 'https://github.com/MASROUGHOU001', phone: '622586164', email: 'mamadoumasroughoubah@gmail.com' },
       initials: 'MT',
       color: '#005F82',
     },
@@ -63,7 +63,7 @@ const TeamSection: React.FC = () => {
 
   const stats = [
     { value: '30+', label: 'Jeunes Talents' },
-    { value: '15', label: 'Projets Sociaux' },
+    { value: '5', label: 'Projets Sociaux' },
     { value: '8', label: 'Certifications' },
     { value: '4.9', label: 'Satisfaction Client' },
   ];
@@ -290,7 +290,7 @@ const TeamSection: React.FC = () => {
                   </div>
                   <div className="member-socials">
                     <a href={m.social.github} className="social-btn" target="_blank" rel="noopener noreferrer"><Globe size={15} /></a>
-                    <a href={m.social.linkedin} className="social-btn" target="_blank" rel="noopener noreferrer"><User size={15} /></a>
+                    <a href={`tel:+224${m.social.phone}`} className="social-btn"><Phone size={15} /></a>
                     <a href={`mailto:${m.social.email}`} className="social-btn"><Mail size={15} /></a>
                   </div>
                 </div>
